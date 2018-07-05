@@ -1,5 +1,4 @@
 import Foundation
-import AppKit
 
 typealias custProtol = Comparable & Equatable
 struct Student {
@@ -60,5 +59,3 @@ for i in 0...9 {
     array.append(student)
 }
 print(quickSort(array))
-
-

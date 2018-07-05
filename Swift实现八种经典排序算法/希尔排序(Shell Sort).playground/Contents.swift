@@ -1,6 +1,5 @@
 import Foundation
 
-
 typealias custProtol = Comparable & Equatable
 struct Student {
     let name: String

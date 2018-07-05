@@ -19,4 +19,7 @@
    <FileRef
       location = "group:&#x5f52;&#x5e76;&#x6392;&#x5e8f;(Merge Sort).playground">
    </FileRef>
+   <FileRef
+      location = "group:&#x5feb;&#x901f;&#x6392;&#x5e8f;(Quick Sort).playground">
+   </FileRef>
 </Workspace>
