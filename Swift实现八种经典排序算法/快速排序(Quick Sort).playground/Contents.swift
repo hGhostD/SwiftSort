@@ -17,7 +17,6 @@ extension Student: custProtol {
     static func == (lhs: Student, rhs: Student) -> Bool {
         return lhs.age == rhs.age
     }
-    
 }
 
 func quickSort<T:custProtol>(_ sortArray:[T]) -> [T] {

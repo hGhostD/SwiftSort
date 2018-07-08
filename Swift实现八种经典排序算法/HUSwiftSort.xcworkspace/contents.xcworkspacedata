@@ -22,4 +22,10 @@
    <FileRef
       location = "group:&#x5feb;&#x901f;&#x6392;&#x5e8f;(Quick Sort).playground">
    </FileRef>
+   <FileRef
+      location = "group:&#x5806;&#x6392;&#x5e8f;(Heap Sort).playground">
+   </FileRef>
+   <FileRef
+      location = "group:&#x8ba1;&#x6570;&#x6392;&#x5e8f;(Counting Sort).playground">
+   </FileRef>
 </Workspace>
