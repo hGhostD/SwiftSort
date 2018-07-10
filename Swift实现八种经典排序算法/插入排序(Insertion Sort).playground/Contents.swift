@@ -3,7 +3,7 @@ import Foundation
 typealias custProtol = Comparable & Equatable
 struct Student {
     let name: String
-    let age: Int
+    let age: NSInteger
 }
 extension Student: custProtol {
     static func < (lhs: Student, rhs: Student) -> Bool {

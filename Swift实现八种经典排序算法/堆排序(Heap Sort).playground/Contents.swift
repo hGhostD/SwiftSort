@@ -3,7 +3,7 @@ import Foundation
 typealias custProtol = Comparable & Equatable
 struct Student {
     let name: String
-    let age: Int
+    let age: NSInteger
 }
 extension Student: custProtol {
     static func < (lhs: Student, rhs: Student) -> Bool {
@@ -19,7 +19,7 @@ extension Student: custProtol {
     }
 }
 
-var len: Int = 0
+var len: NSInteger = 0
 
 func heapSort<T:custProtol>(_ sortArray:[T]) -> [T] {
     if sortArray.count <= 1 { return sortArray}
@@ -44,7 +44,7 @@ func buildMaxHeap<T:custProtol>(array:inout [T]) {
     }
 }
 
-func heapify<T:custProtol>(array: inout [T], index: Int) {
+func heapify<T:custProtol>(array: inout [T], index: NSInteger) {
     var left = 2 * index + 1, right = 2 * index + 2, largest = index
     if left < len && array[left] > array[largest] {
         largest = left

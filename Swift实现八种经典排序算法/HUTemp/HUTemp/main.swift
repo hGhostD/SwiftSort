@@ -3,7 +3,7 @@ import Foundation
 typealias custProtol = Comparable & Equatable
 struct Student {
     let name: String
-    let age: Int
+    let age: NSInteger
 }
 extension Student: custProtol {
     static func < (lhs: Student, rhs: Student) -> Bool {
@@ -18,53 +18,42 @@ extension Student: custProtol {
         return lhs.age == rhs.age
     }
 }
+// 一般是针对已知范围的应用排序。而且这个范围不能太大
 
-var len: Int = 0
-
-func heapSort<T:custProtol>(_ sortArray:[T]) -> [T] {
-    if sortArray.count <= 1 { return sortArray}
-    var tempSortArray = sortArray
-    buildMaxHeap(array: &tempSortArray)
-    var index = tempSortArray.count - 1
-    while index > 0 {
-        tempSortArray.swapAt(0, index)
-        len -= 1
-        heapify(array: &tempSortArray, index: 0)
-        index -= 1
+func contingSort<T:custProtol>(_ sortArray:inout [T], maxValue: NSInteger) -> [T] {
+    var bucketArray:[NSInteger] = Array(repeating: 0, count: maxValue + 1),
+    sortedIndex = 0,
+    arrayLen = sortArray.count,
+    bucketLen = maxValue + 1
+    var i = 0
+    while i < arrayLen {
+        let key = sortArray[i] as! Student
+        
+        bucketArray[key.age] += 1
+        i += 1
     }
-    return tempSortArray
-}
-
-func buildMaxHeap<T:custProtol>(array:inout [T]) {
-    len = array.count
-    var i = len / 2
-    while i >= 0 {
-        heapify(array: &array, index: i)
-        i -= 1
+    
+    var j = 0
+    while j < bucketLen {
+        while bucketArray[j] > 0 {
+            let new = Student(name: (sortArray[sortedIndex] as! Student).name, age: j) as! T
+            sortArray[sortedIndex] = new
+            sortedIndex += 1
+            bucketArray[j] -= 1
+        }
+        j += 1
     }
-}
-
-func heapify<T:custProtol>(array: inout [T], index: Int) {
-    var left = 2 * index + 1, right = 2 * index + 2, largest = index
-    if left < len && array[left] > array[largest] {
-        largest = left
-    }
-    if right < len && array[right] > array[largest] {
-        largest = right
-    }
-    if largest != index {
-        array.swapAt(index, largest)
-        heapify(array: &array, index: largest)
-    }
+    return sortArray
 }
 
 var array: [Student] = []
-for i in 0...9 {
-    let age = Int(arc4random() % 100)
+for i in 0...10 {
+    let age = Int(arc4random() % 10)
     
     let student = Student(name: "S\(i).", age: age)
     array.append(student)
 }
 
-print(heapSort(array))
+print(contingSort(&array, maxValue: 10))
+
 

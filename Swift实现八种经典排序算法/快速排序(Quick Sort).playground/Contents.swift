@@ -3,7 +3,7 @@ import Foundation
 typealias custProtol = Comparable & Equatable
 struct Student {
     let name: String
-    let age: Int
+    let age: NSInteger
 }
 extension Student: custProtol {
     static func < (lhs: Student, rhs: Student) -> Bool {
@@ -36,7 +36,7 @@ func quickSortPrivateMethod<T:custProtol>(_ sortArray: inout [T], leftIndex:Int,
     }
 }
 
-func partition<T:custProtol>(array:inout [T], leftIndex: Int, rightIndex: Int) -> Int {
+func partition<T:custProtol>(array:inout [T], leftIndex: NSInteger, rightIndex: NSInteger) -> Int {
     var pivot = leftIndex, index = pivot + 1
     var i = index
     while i <= rightIndex {
